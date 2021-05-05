@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://raptorapi.habitacars.com",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,320 @@
+<form autocomplete="off" (ngSubmit)="onSubmit( f )" #f="ngForm">
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Datos Cliente:</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="cedula" class="form-label">Cédula:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese su Nº de cédula"
+                        aria-label="default input example" id="cedula" [(ngModel)]="cedula" name="cedula" required>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="fecNac" class="form-label">Fecha de nacimiento:</label>
+                    <input class="form-control" type="date" placeholder="Ingrese su fecha de nacimiento"
+                        aria-label="default input example" id="fecNac" [(ngModel)]="fecNac" name="fecNac">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="nombres" class="form-label">Nombres:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese sus nombres"
+                        aria-label="default input example" id="nombres" [(ngModel)]="nombre" name="nombre">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="apellidos" class="form-label">Apellidos:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese sus apellidos"
+                        aria-label="default input example" id="apellidos" [(ngModel)]="apellido" name="apellido">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="TelCon" class="form-label">Teléfono Convencional:</label>
+                    <input class="form-control" type="text" min="0" placeholder="Ingrese su Nº de tel convencional"
+                        aria-label="default input example" id="TelCon" [(ngModel)]="TelCon" name="TelCon">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="TelCel" class="form-label">Teléfono Celular:</label>
+                    <input class="form-control" type="text" min="0" placeholder="Ingrese su Nº de tel celular"
+                        aria-label="default input example" id="TelCel" [(ngModel)]="TelCel" name="TelCel">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="provincia" class="form-label">Provincia:</label>
+                    <select class="form-select" [(ngModel)]="provincia" name="provincia">
+                        <option [value]="0" selected>Seleccione una provincia</option>
+                        <option [value]="province" *ngFor="let province of provinces">
+                            {{province}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="ciudad" class="form-label">Ciudad:</label>
+                    <select class="form-select" aria-label="Default select example" id="ciudad" [(ngModel)]="ciudad"
+                        name="ciudad">
+                        <option selected [value]="0">Seleccione una ciudad</option>
+                        <option [value]="city" *ngFor="let city of cities">
+                            {{city}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="sector" class="form-label">Sector:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese su sector"
+                        aria-label="default input example" id="sector" [(ngModel)]="sector" name="sector">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="calPri" class="form-label">Calle Principal:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese su calle principal"
+                        aria-label="default input example" id="calPri" [(ngModel)]="calPri" name="calPri">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="calSec" class="form-label">Calle Secundaria:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese su calle secundaria"
+                        aria-label="default input example" id="calSec" [(ngModel)]="calSec" name="calSec">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="numCas" class="form-label">Nº de casa:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese su Nº de casa"
+                        aria-label="default input example" id="numCas" [(ngModel)]="numCas" name="numCas">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="referencia" class="form-label">Referencia:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese una referencia"
+                        aria-label="default input example" id="referencia" [(ngModel)]="referencia" name="referencia">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+
+                </div>
+            </div>
+            <div *ngIf="socio==1" class="row">
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <label for="socio" class="form-label">Cliente:</label>
+                    <div class="form-check" id="socio">
+                        <input class="form-check-input" type="radio" [(ngModel)]="socio" name="socio" id="socio"
+                            (click)="socio=0">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Si
+                        </label>
+                    </div>
+                    <div class="form-check pb-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            (click)="socio=1" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="socio==1" class="row">
+                <div class="col-lg-2 col-md-2">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Cotizador:</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="monto" class="form-label">Monto:</label>
+                    <input class="form-control" type="number" placeholder="Monto del contrato"
+                        aria-label="default input example" id="monto" [(ngModel)]="monto" name="monto"
+                        (ngModelChange)="calculaCuota($event)">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="meses" class="form-label">Meses:</label>
+                    <select class="form-select" [(ngModel)]="meses" name="meses" (ngModelChange)="calculaMes($event)">
+                        <option value="0">Seleccione una opción</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
+                        <option value="48">48</option>
+                        <option value="60">60</option>
+                        <option value="72">72</option>
+                        <option value="84">84</option>
+                        <option value="96">96</option>
+                        <option value="108">108</option>
+                        <option value="120">120</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="porDes" class="form-label">Porcentaje de descuento:</label>
+                    <input class="form-control" type="number" min="0" max="100" placeholder="Descuento del contrato"
+                        aria-label="default input example" id="porDes" [(ngModel)]="porDes" name="porDes"
+                        (ngModelChange)="actualiza($event)">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="desDes" class="form-label">Descripción de descuento:</label>
+                    <input class="form-control" type="text" placeholder="Razón del descuento"
+                        aria-label="default input example" id="desDes" [(ngModel)]="desDes" name="desDes">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="cuoIni" class="form-label">Cuota inicial:</label>
+                    <input class="form-control" type="number" placeholder="Cuota inicial del contrato"
+                        aria-label="default input example" id="cuoIni" [(ngModel)]="cuoIni" name="cuoIni" disabled>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="cuoMen" class="form-label">Cuota mensual:</label>
+                    <input class="form-control" type="number" placeholder="Cuota mensual del contrato"
+                        aria-label="default input example" id="cuoMen" [(ngModel)]="cuoMen" name="cuoMen" disabled>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="bien" class="form-label">Bien adquirido:</label>
+                    <select class="form-select" [(ngModel)]="bien" name="bien">
+                        <option value="0">Seleccione un bien</option>
+                        <option value="casa">casa</option>
+                        <option value="auto">auto</option>
+                        <option value="moto">moto</option>
+                        <option value="emprendimiento">emprendimiento</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="inscripcion" class="form-label">Valor inscripción</label>
+                    <input class="form-control" type="text" placeholder="Valor inscripción"
+                        aria-label="default input example" id="inscripcion" [(ngModel)]="inscripcion" name="inscripcion"
+                        disabled>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="descIns" class="form-label">Valor inscripción con descuento</label>
+                    <input class="form-control" type="text" placeholder="Valor con descuento"
+                        aria-label="default input example" id="descIns" [(ngModel)]="descIns" name="descIns" disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="pago" class="form-label">Valor a pagar</label>
+                    <input class="form-control" type="text" placeholder="Valor a pagar luego del 1er pago"
+                        aria-label="default input example" id="pago" [(ngModel)]="pago" name="pago" disabled>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="total" class="form-label">Valor total</label>
+                    <input class="form-control" type="text" placeholder="Valor total del contrato"
+                        aria-label="default input example" id="total" [(ngModel)]="total" name="total" disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <button class="btn btn-primary" (click)="generaPDF()">Cotizar</button>
+                </div>            
+            </div>  
+        </div>
+        <div *ngIf="socio==0" class="col-lg-4 col-md-2">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Datos Contrato:</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="numCon" class="form-label">Nº de contrato:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese su Nº de contrato"
+                        aria-label="default input example" id="numCon" [(ngModel)]="numCon" name="numCon">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="fecIni" class="form-label">Fecha de inicio:</label>
+                    <input class="form-control" type="date" value="{{actualDate}}"
+                        placeholder="Ingrese la fecha de inicio del contrato" aria-label="default input example" id="fecIni"
+                        name="fecIni">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="idFac" class="form-label">N° Factura:</label>
+                    <input class="form-control" type="text" placeholder="N° Factura" aria-label="default input example" id="idFac"
+                        [(ngModel)]="idFac" name="idFac">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="formaPago" class="form-label">Forma de Pago:</label>
+                    <select class="form-select" [(ngModel)]="formaPago" name="formaPago">
+                        <option value="0">Seleccione una opción</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Transferencia">Transferencia</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="idEmp" class="form-label">Agente:</label>
+                    <select class="form-select" [(ngModel)]="idEmp" name="idEmp">
+                        <option [value]="0">Seleccione un empleado</option>
+                        <option [value]="empleado.ID_EMP" *ngFor="let empleado of empleados">
+                            {{empleado.NOM_PER}} {{empleado.APE_PER}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1>Datos Cuenta:</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="correo" class="form-label">Correo:</label>
+                    <input class="form-control" type="mail" placeholder="Ingrese su correo"
+                        aria-label="default input example" id="correo" [(ngModel)]="correo" name="correo">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="pass" class="form-label">Contraseña:</label>
+                    <input class="form-control" type="password" autocomplete="off" value=""
+                        placeholder="Ingrese su contraseña" aria-label="default input example" id="pass"
+                        [(ngModel)]="pass" name="pass">
+                </div>
+            </div>
+            <div *ngIf="socio==0" class="row">
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <label for="socio" class="form-label">Socio:</label>
+                    <div class="form-check" id="socio">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                            (click)="socio=0" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Si
+                        </label>
+                    </div>
+                    <div class="form-check pb-2">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            (click)="socio=1">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="socio==0" class="row">
+                <div class="col-lg-2 col-md-2">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,54 @@
+<form autocomplete="off" (ngSubmit)="onSubmit( f )" #f="ngForm">
+    <div class="">
+        <div class="col-lg-4 col-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Datos Llamada:</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="fecha" class="form-label">Fecha:</label>
+                    <input class="form-control" type="date" placeholder="Ingrese la fecha"
+                        aria-label="default input example" id="fecha" [(ngModel)]="fecha" name="fecha">
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="hora" class="form-label">Hora:</label>
+                    <input class="form-control" type="time" placeholder="Ingrese la hora de pago"
+                        aria-label="default input example" id="hora" [(ngModel)]="hora" name="hora">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="observacion" class="form-label">Observación:</label>
+                    <textarea class="form-control" type="number" placeholder="Descripción de la observación"
+                        aria-label="default input example" id="observacion" [(ngModel)]="observacion" name="observacion"
+                        rows="3"></textarea>
+                </div>
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="seguimiento" class="form-label">Seguimiento:</label>
+                    <textarea class="form-control" type="text" placeholder="Descripción del seguimiento"
+                        aria-label="default input example" id="seguimiento" [(ngModel)]="seguimiento" name="seguimiento"
+                        rows="3"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 mb-3">
+                    <label for="grabacion" class="form-label">Link Grabación:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese la url de la grabación"
+                        aria-label="default input example" id="grabacion" [(ngModel)]="grabacion" name="grabacion">
+                </div>
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="encargado" class="form-label">Encargado:</label>
+                    <input class="form-control" type="text" placeholder="Persona encargada" aria-label="default input example"
+                        id="encargado" [(ngModel)]="encargado" name="encargado" disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

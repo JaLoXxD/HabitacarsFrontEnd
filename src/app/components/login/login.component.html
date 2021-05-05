@@ -1,0 +1,50 @@
+<!-- <div class="col-lg-3 col-md-6 col-2 mb-3 p-5 align-middle">
+    <form autocomplete="off" (ngSubmit)="onSubmit( f )" #f="ngForm">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mail"
+                [(ngModel)]="mail">
+            <div id="emailHelp" class="form-text">Recuerda nunca compartir tu correo con alguien más</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                [(ngModel)]="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div> -->
+<div class="col-lg-12 col-md-12 col-12 mb-3 pt-5 align-middle">
+    <div class="user_card">
+        <div class="d-flex justify-content-center">
+            <div class="brand_logo_container">
+                <img src="../../../assets/images/login.png" class="brand_logo" alt="Logo">
+            </div>
+        </div>
+        <div class="inicio">
+            <h3>Inicio de Sesión</h3>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+            <form autocomplete="off" (ngSubmit)="onSubmit( f )" #f="ngForm">
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" name="mail" [(ngModel)]="mail" class="form-control input_user" value=""
+                        placeholder="correo">
+                </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password" name="password" [(ngModel)]="password" class="form-control input_pass"
+                        value="" placeholder="contraseña">
+                </div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <button type="submit" name="button" class="btn login_btn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

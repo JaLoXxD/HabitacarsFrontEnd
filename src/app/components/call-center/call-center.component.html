@@ -1,0 +1,43 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-mb-3">
+            <div class="form-group pb-5">
+                <label for="filterPost" id="labelFP">Filtro de búsqueda:</label>
+                <input type="text" class="form-control" name="filterPost" id="filterPost" aria-describedby="helpId"
+                    placeholder="Ingrese la cédula" [(ngModel)]="filterPost">
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de llamada</th>
+                    <th scope="col">Hora de llamada</th>
+                    <th scope="col">Link grabación</th>
+                    <th scope="col">Seguimiento</th>
+                    <th scope="col">Observación</th>
+                    <th scope="col">Encargado</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let call of calls | filter:filterPost | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{call.CED_PER}}</th>
+                    <th scope="row">{{call.NOM_PER}} {{call.APE_PER}}</th>
+                    <th scope="row">{{call.FEC_CAL}}</th>
+                    <th scope="row">{{call.HOR_CAL}}</th>
+                    <th scope="row"><a href="{{call.GRA_CAL}}" target="_blank">{{call.GRA_CAL}}</a></th>
+                    <th scope="row">{{call.SEG_CAL}}</th>
+                    <th scope="row">{{call.OBS_CAL}}</th>
+                    <th scope="row">{{call.ENC_CAL}}</th>
+                    <th *ngIf="rol != 'Cliente'"><button class="btn btn-outline-success btn-block" title="Actualizar"
+                            (click)="update(call.CED_PER)">Actualizar</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

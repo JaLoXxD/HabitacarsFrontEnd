@@ -1,0 +1,52 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-mb-3">
+            <div class="form-group pb-5">
+                <label for="filterPost" id="labelFP">Filtro de búsqueda:</label>
+                <input type="text" class="form-control" name="filterPost" id="filterPost" aria-describedby="helpId"
+                    placeholder="Ingrese la cédula" [(ngModel)]="filterPost">
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de nacimiento</th>
+                    <th scope="col">Contrato</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let client of Clients | filter:filterPost | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <td>{{client.CED_PER}}</td>
+                    <td>{{client.NOM_PER}} {{client.APE_PER}}</td>
+                    <td>{{client.FECN_CLI.split('-').reverse().join('-')}}</td>
+                    <td *ngIf="client.SOC_CLI == 0">Si</td>
+                    <td *ngIf="client.SOC_CLI == 1">No</td>
+                    <td class="d-flex justify-content-evenly">
+                        <button class="btn btn-outline-primary btn-block pl-2" title="Información"
+                            (click)="verCliente(client.CED_PER,client.SOC_CLI)"><i
+                                class="fas fa-info-circle"></i></button>
+                        <button *ngIf="rol == 'Gerente'" class="btn btn-outline-primary btn-block" title="Actualizar"
+                            (click)="actualizarCliente(client.CED_PER,client.SOC_CLI)"><i
+                                class="fas fa-user-edit"></i></button>
+                        <button *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Contador'"
+                            class="btn btn-outline-success btn-block" title="Ver Facturas"
+                            (click)="verFacturas(client.CED_PER)"><i class="fas fa-file-invoice-dollar"></i></button>
+                        <button *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Contador'"
+                            class="btn btn-outline-danger btn-block" title="Eliminar Usuario"
+                            (click)="eliminar(client.CED_PER,client.NOM_PER,client.APE_PER)"><i class="fas fa-user-times"></i></button>
+                        <button *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Contador'"
+                            class="btn btn-outline-success btn-block" title="Crear Llamada"
+                            (click)="llamada(client.CED_PER)"><i class="fas fa-phone-volume"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

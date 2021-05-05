@@ -1,0 +1,48 @@
+<div class="container pt-5">
+    <h1>Facturas del cliente con CI: {{cedula}}</h1>
+    <div class="row pb-5 pt-5" *ngIf="rol != 'Cliente'">
+        <div class="col-2">
+            <button class="btn btn-outline-primary btn-block" (click)="create(cedula)">Crear Factura</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">N° Factura</th>
+                    <th scope="col">Fecha de Pago</th>
+                    <th scope="col">Fecha límite de pago</th>
+                    <th scope="col">Encargado</th>
+                    <th scope="col">Forma de pago</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Valor cuota</th>
+                    <th scope="col">Abono</th>
+                    <th scope="col">Faltante</th>
+                    <th scope="col">Valor Factura</th>
+                    <th scope="col">Observación</th>
+                    <th scope="col" *ngIf="rol != 'Cliente'">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let invoice of invoices | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{invoice.NUM_FAC}}</th>
+                    <td>{{invoice.FEC_FAC.split('-').reverse().join('-')}}</td>
+                    <td>{{invoice.FECT_FAC.split('-').reverse().join('-')}}</td>
+                    <td>{{invoice.ENC_FAC}}</td>
+                    <td>{{invoice.FPA_FAC}}</td>
+                    <td *ngIf="invoice.EST_FAC == 0">Pagado</td>
+                    <td *ngIf="invoice.EST_FAC == 1">Pendiente</td>
+                    <td>{{invoice.CUOM_FAC}}</td>
+                    <td>{{invoice.ADE_FAC}}</td>
+                    <td>{{invoice.FAL_FAC}}</td>
+                    <td>{{invoice.TOT_FAC}}</td>
+                    <td>{{invoice.OBS_FAC}}</td>
+                    <td *ngIf="rol != 'Cliente'"><button class="btn btn-outline-success btn-block" title="Actualizar"
+                            (click)="update(invoice.ID_FAC,cedula)">Actualizar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

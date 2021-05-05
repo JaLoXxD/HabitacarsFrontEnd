@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="nav">
+    <div class="container-fluid">
+        <img class='d-inline-flex p-2' src="../../../assets/images/logo.png" alt="" width="130" height="50">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['home']">Inicio</a>
+                </li>
+
+                <li class="nav-item dropdown" *ngIf="rol != 'Cliente'">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" [routerLinkActive]="['active']">
+                        Clientes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['verClientes']">Con contrato</a></li>
+                        <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['verClientes2']">Sin contrato</a></li>
+                        <li *ngIf="rol == 'Gerente' || rol == 'Asesor' || rol == 'Supervisor'"><a class="dropdown-item"
+                                routerLinkActive="active" [routerLink]="['crearCliente']">Crear
+                                Cliente</a></li>
+                    </ul>
+                </li>
+
+                <li *ngIf="rol == 'Gerente' || rol == 'Supervisor'" class="nav-item dropdown"
+                    [routerLinkActive]="['active']">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Empleados
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLinkActive="active" [routerLink]="['verAsesores']">Ver
+                                Empleados</a></li>
+                        <li *ngIf="rol=='Gerente'"><a class="dropdown-item" routerLinkActive="active"
+                                [routerLink]="['crearAsesor']">Crear
+                                Empleado</a></li>
+                    </ul>
+                </li>
+                <li  *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Call Center'" class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['callCenter']">Call Center</a>
+                </li>
+            </ul>
+            <form class="d-flex" *ngIf="isLogin == false">
+                <button class="btn btn-outline-success" type="submit" [routerLink]="['login']">Iniciar Sesión</button>
+            </form>
+            <form class="d-flex" *ngIf="isLogin == true">
+                <a class="nav-link text-success" tabindex="-1" aria-disabled="true"
+                    [routerLink]="['perfilUsuario']">Bienvenido {{name}}</a>
+                <button class="btn btn-outline-success" type="submit" (click)="logout()">Cerrar Sesión</button>
+            </form>
+        </div>
+    </div>
+</nav>

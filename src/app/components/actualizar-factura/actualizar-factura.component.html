@@ -1,0 +1,69 @@
+<form autocomplete="off" (ngSubmit)="onSubmit( f )" #f="ngForm">
+    <div class="col-xs-1-12">
+        <div class="col-lg-4 col-md-4">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Datos Factura:</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="factura" class="form-label">N° Factura:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese el Nº de factura"
+                        aria-label="default input example" id="factura" [(ngModel)]="factura" name="factura">
+                </div>
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="fecPag" class="form-label">Fecha de pago:</label>
+                    <input class="form-control" type="date" placeholder="Ingrese la fecha de pago"
+                        aria-label="default input example" id="fecPag" [(ngModel)]="fecPag" name="fecPag">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="encargado" class="form-label">Encargado:</label>
+                    <input class="form-control" type="text" placeholder="Persona encargada"
+                        aria-label="default input example" id="encargado" [(ngModel)]="encargado" name="encargado" disabled>
+                </div>
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="formaPago" class="form-label">Forma de Pago:</label>
+                    <select class="form-select" [(ngModel)]="formaPago" name="formaPago">
+                        <option value="0">Seleccione una opción</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Transferencia">Transferencia</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="valor" class="form-label">Valor:</label>
+                    <input class="form-control" type="number" placeholder="Ingrese el valor de factura"
+                        aria-label="default input example" id="valor" [(ngModel)]="valor" name="valor">
+                </div>
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="adelanto" class="form-label">Adelanto:</label>
+                    <input class="form-control" type="number" placeholder="Ingrese el valor del adelanto" aria-label="default input example"
+                        id="valor" [(ngModel)]="adelanto" name="adelanto">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="faltante" class="form-label">Faltante:</label>
+                    <input class="form-control" type="number" placeholder="Ingrese el valor faltante"
+                        aria-label="default input example" id="faltante" [(ngModel)]="faltante" name="faltante">
+                </div>
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="observacion" class="form-label">Observación:</label>
+                    <input class="form-control" type="text" placeholder="Ingrese la observación" aria-label="default input example"
+                        id="observacion" [(ngModel)]="observacion" name="observacion">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</form>

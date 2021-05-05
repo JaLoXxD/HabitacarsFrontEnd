@@ -1,0 +1,24 @@
+<div class="container pt-5">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let asesor of asesores | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <th scope="row">{{asesor.ID_EMP}}</th>
+                    <td>{{asesor.CED_PER}}</td>
+                    <td>{{asesor.NOM_PER}} {{asesor.APE_PER}}</td>
+                    <td>{{asesor.DES_ROL}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
