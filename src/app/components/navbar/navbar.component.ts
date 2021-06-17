@@ -11,11 +11,16 @@ export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
   rol: string = localStorage.getItem('rol');
   name: string = localStorage.getItem('name');
+  token: string = '';
+  current: string;
   constructor(private _AuthService: AuthService, private _router: Router) {
-    console.log(localStorage.getItem('token'));
     if (!localStorage.getItem('token')) {
       this._router.navigateByUrl('/login');
+    } else {
+      this.token = localStorage.getItem('token');
     }
+    this.current = this._router.url;
+    console.log(this.current);
   }
 
   ngOnInit(): void {

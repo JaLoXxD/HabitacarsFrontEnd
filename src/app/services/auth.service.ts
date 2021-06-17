@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  /* private url = 'https://raptorapi.habitacars.com'; */
-  private url = 'http://127.0.0.1:4000';
+  private url = 'https://raptorapi.habitacars.com';
+  /* private url = 'http://127.0.0.1:4000'; */
   private userToken: string;
   constructor(private _http: HttpClient) {
     this.leerToken();

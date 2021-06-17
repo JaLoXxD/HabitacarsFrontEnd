@@ -14,6 +14,7 @@
                     <th scope="col">Fecha límite de pago</th>
                     <th scope="col">Encargado</th>
                     <th scope="col">Forma de pago</th>
+                    <th scope="col">Número de transferencia</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Valor cuota</th>
                     <th scope="col">Abono</th>
@@ -30,6 +31,7 @@
                     <td>{{invoice.FECT_FAC.split('-').reverse().join('-')}}</td>
                     <td>{{invoice.ENC_FAC}}</td>
                     <td>{{invoice.FPA_FAC}}</td>
+                    <td>{{invoice.NTR_FAC}}</td>
                     <td *ngIf="invoice.EST_FAC == 0">Pagado</td>
                     <td *ngIf="invoice.EST_FAC == 1">Pendiente</td>
                     <td>{{invoice.CUOM_FAC}}</td>

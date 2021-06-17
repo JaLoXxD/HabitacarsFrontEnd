@@ -22,6 +22,7 @@ export class ActualizarFacturaComponent implements OnInit {
   observacion: string;
   cedula: string;
   idFac: number;
+  numTran: number;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -70,7 +71,8 @@ export class ActualizarFacturaComponent implements OnInit {
         this.valor,
         this.adelanto,
         this.faltante,
-        this.observacion
+        this.observacion,
+        this.numTran
       )
       .subscribe(
         (resp) => {

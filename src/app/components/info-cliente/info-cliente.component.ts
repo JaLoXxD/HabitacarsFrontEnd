@@ -61,7 +61,9 @@ export class InfoClienteComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  cambia(value: String){
+  cambia(value: String) {
     this.option = value;
   }
+
+  
 }

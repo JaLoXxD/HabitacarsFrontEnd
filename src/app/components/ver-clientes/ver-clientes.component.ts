@@ -46,7 +46,7 @@ export class VerClientesComponent implements OnInit {
       title:
         '¿Seguro desea eliminar el cliente ' + nombre + ' ' + apellido + '?',
       showDenyButton: true,
-      confirmButtonText: `Yes`,
+      confirmButtonText: `Si`,
       denyButtonText: `No`,
       customClass: {
         cancelButton: 'order-1 right-gap',

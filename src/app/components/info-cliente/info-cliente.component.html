@@ -1,47 +1,54 @@
-<div class="row">
-    <h1 class="d-flex justify-content-center">Información</h1>
-</div>
-<div class="row info p-0">
-    <div class="col col-lg-2 buttons">
-        <div class="col">
-            <div class="btn-group-vertical">
-                <a (click)="cambia('InfoGeneral')" class="btn btn-dark active" aria-current="page">Información
-                    General</a>
-                <a (click)="cambia('Contrato')" class="btn btn-dark">Contrato</a>
-                <a (click)="cambia('Cuenta')" class="btn btn-dark">Cuenta</a>
+<div id='contenedor'>
+    <div id='padre'>
+        <div id='hijo' class="row info p-0">
+            <div class="col-12 col-sm-6 col-lg-4 buttons">
+                <div class="col">
+                    <div class="btn-group-vertical botones">
+                        <h1 id="txtInfo" class="txt">Información</h1>
+                        <a (click)="cambia('InfoGeneral')" [ngClass]="{'active': option == 'InfoGeneral'}"
+                            class="btn btn-dark active" aria-current="page">Información
+                            General</a>
+                        <a (click)="cambia('Contrato')" [ngClass]="{'active': option == 'Contrato'}"
+                            class="btn btn-dark">Contrato</a>
+                        <a (click)="cambia('Cuenta')" [ngClass]="{'active': option == 'Cuenta'}"
+                            class="btn btn-dark">Cuenta</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="col col-lg-6 pl-0  contenido">
-        <div *ngIf="option == 'InfoGeneral'">
-            <h3>Identificación: {{client.CED_PER}}</h3>
-            <h3>Nombre Completo: {{client.NOM_PER}} {{client.APE_PER}}</h3>
-            <h2>Telefonos</h2>
-            <h3 *ngFor="let telephone of telephones">{{telephone.NUM_TEL}} ({{telephone.TIP_TEL}})</h3>
-            <h2>Dirección</h2>
-            <h3>Provincia: {{client.PRO_DIR}}</h3>
-            <h3>Ciudad: {{client.CIU_DIR}}</h3>
-            <h3>Sector: {{client.SEC_DIR}}</h3>
-            <h3>Calle Principal: {{client.CALP_DIR}}</h3>
-            <h3>Calle Secundaria: {{client.CALS_DIR}}</h3>
-            <h3>Nº Casa: {{client.NCA_DIR}}</h3>
-        </div>
-        <div *ngIf="socio==0 && option == 'Contrato'">
-            <h2>Contrato</h2>
-            <h3>Nº de Contrato: {{client.ID_CON}}</h3>
-            <h3>Fecha de Inicio: {{client.FECI_CON}}</h3>
-            <h3>Monto: ${{client.MON_CON}}</h3>
-            <h3>Meses: {{client.MES_CON}}</h3>
-            <h3>Cuota Inicial: {{client.CUOI_CON}}</h3>
-            <h3>Cuota Mensual: {{client.CUOM_CON}}</h3>
-            <h3>Porcentaje del Descuento: {{client.PDES_CON}}</h3>
-            <h3>Descripción del Descuento: {{client.DDES_CON}}</h3>
-            <h3>Bien Adquirido: {{client.BIE_CON}}</h3>
-            <h3>Asesor: {{employe.NOM_PER}} {{employe.APE_PER}}</h3>
-        </div>
-        <div *ngIf="socio==0 && option == 'Cuenta'">
-            <h2>Cuenta</h2>
-            <h3>Correo: {{client.MAIL_CUE}}</h3>
+            <div class="col-12 col-sm-6 col-lg-8 contenido">
+                <div *ngIf="option == 'InfoGeneral'">
+                    <h4 class="txt"><i class="fas fa-address-card ico"></i> Identificación: </h4>
+                    <h5 class="txt2">{{client.CED_PER}}</h5>
+                    <h4 class="txt"><i class="fas fa-user-circle ico"></i> Nombre Completo:</h4>
+                    <h5 class="txt2">{{client.NOM_PER}} {{client.APE_PER}}</h5>
+                    <h4 class="txt"><i class="fas fa-phone-square-alt ico"></i> Telefonos</h4>
+                    <h5 class="txt2" *ngFor="let telephone of telephones">{{telephone.TIP_TEL}}-{{telephone.NUM_TEL}}
+                    </h5>
+                    <h4 class="txt"><i class="fas fa-map-signs ico"></i> Dirección</h4>
+                    <h5 class="txt2">Provincia: {{client.PRO_DIR}}</h5>
+                    <h5 class="txt2">Ciudad: {{client.CIU_DIR}}</h5>
+                    <h5 class="txt2">Sector: {{client.SEC_DIR}}</h5>
+                    <h5 class="txt2">Calle Principal: {{client.CALP_DIR}}</h5>
+                    <h5 class="txt2">Calle Secundaria: {{client.CALS_DIR}}</h5>
+                    <h5 class="txt2">Nº Casa: {{client.NCA_DIR}}</h5>
+                </div>
+                <div *ngIf="socio==0 && option == 'Contrato'">
+                    <h4 class="txt2">Nº de Contrato: {{client.ID_CON}}</h4>
+                    <h3 class="txt2">Fecha de Inicio: {{client.FECI_CON}}</h3>
+                    <h3 class="txt2">Monto: ${{client.MON_CON}}</h3>
+                    <h3 class="txt2">Meses: {{client.MES_CON}}</h3>
+                    <h3 class="txt2">Cuota Inicial: {{client.CUOI_CON}}</h3>
+                    <h3 class="txt2">Cuota Mensual: {{client.CUOM_CON}}</h3>
+                    <h3 class="txt2">Porcentaje del Descuento: {{client.PDES_CON}}</h3>
+                    <h3 class="txt2">Descripción del Descuento: {{client.DDES_CON}}</h3>
+                    <h3 class="txt2">Bien Adquirido: {{client.BIE_CON}}</h3>
+                    <h3 class="txt2">Asesor: {{employe.NOM_PER}} {{employe.APE_PER}}</h3>
+                </div>
+                <div *ngIf="socio==0 && option == 'Cuenta'">
+                    <h2 class="txt">Cuenta</h2>
+                    <h3 class="txt2">Correo: {{client.MAIL_CUE}}</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>

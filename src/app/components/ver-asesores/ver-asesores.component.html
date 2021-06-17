@@ -7,6 +7,7 @@
                     <th scope="col">Cédula</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Rol</th>
+                    <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,6 +16,11 @@
                     <td>{{asesor.CED_PER}}</td>
                     <td>{{asesor.NOM_PER}} {{asesor.APE_PER}}</td>
                     <td>{{asesor.DES_ROL}}</td>
+                    <td class="d-flex justify-content-evenly">
+                        <button *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Contador'"
+                            class="btn btn-outline-danger btn-block" title="Eliminar Usuario" (click) = "eliminar(asesor.CED_PER,asesor.NOM_PER,asesor.APE_PER)"><i
+                                class="fas fa-user-times"></i></button>
+                    </td>
                 </tr>
             </tbody>
         </table>

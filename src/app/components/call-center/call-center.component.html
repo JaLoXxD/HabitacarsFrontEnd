@@ -25,16 +25,16 @@
             </thead>
             <tbody>
                 <tr *ngFor="let call of calls | filter:filterPost | paginate: { itemsPerPage: 10, currentPage: page }">
-                    <th scope="row">{{call.CED_PER}}</th>
-                    <th scope="row">{{call.NOM_PER}} {{call.APE_PER}}</th>
-                    <th scope="row">{{call.FEC_CAL}}</th>
-                    <th scope="row">{{call.HOR_CAL}}</th>
-                    <th scope="row"><a href="{{call.GRA_CAL}}" target="_blank">{{call.GRA_CAL}}</a></th>
-                    <th scope="row">{{call.SEG_CAL}}</th>
-                    <th scope="row">{{call.OBS_CAL}}</th>
-                    <th scope="row">{{call.ENC_CAL}}</th>
-                    <th *ngIf="rol != 'Cliente'"><button class="btn btn-outline-success btn-block" title="Actualizar"
-                            (click)="update(call.CED_PER)">Actualizar</button></th>
+                    <td scope="row">{{call.CED_PER}}</td>
+                    <td scope="row">{{call.NOM_PER}} {{call.APE_PER}}</td>
+                    <td scope="row">{{call.FEC_CAL}}</td>
+                    <td scope="row">{{call.HOR_CAL}}</td>
+                    <td class="link" scope="row"><a class="linka" href="{{call.GRA_CAL}}" target="_blank">click para ir al link</a></td>
+                    <td scope="row">{{call.SEG_CAL}}</td>
+                    <td scope="row">{{call.OBS_CAL}}</td>
+                    <td scope="row">{{call.ENC_CAL}}</td>
+                    <td *ngIf="rol != 'Cliente'"><button class="btn btn-outline-success btn-block" title="Actualizar"
+                            (click)="update(call.CED_PER)">Actualizar</button></td>
                 </tr>
             </tbody>
         </table>

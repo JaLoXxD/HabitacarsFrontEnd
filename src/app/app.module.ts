@@ -29,6 +29,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CallCenterComponent } from './components/call-center/call-center.component';
 import { ActualizarLlamadaComponent } from './components/actualizar-llamada/actualizar-llamada.component';
 import { CrearLlamadaComponent } from './components/crear-llamada/crear-llamada.component';
+import { CarrouselComponent } from '../app/components/carrousel/carrousel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { CrearLlamadaComponent } from './components/crear-llamada/crear-llamada.
     CallCenterComponent,
     ActualizarLlamadaComponent,
     CrearLlamadaComponent,
+    CarrouselComponent,
   ],
   imports: [
     BrowserModule,

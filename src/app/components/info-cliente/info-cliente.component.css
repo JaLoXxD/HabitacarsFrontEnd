@@ -1,12 +1,120 @@
 .info {
-  background-color: rgb(224, 74, 5);
+  background-color: #242526;
+  border-radius: 20px;
+}
+#contenedor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#padre {
+  display: flex;
+}
+#hijo {
+  margin: 0 auto;
+  width: 40vw;
+  max-width: 40vw;
+  height: 52vh;
 }
 
-/* .contenido {
-  width: 650px;
+#txtInfo {
+  padding-left: 15px;
+  padding-top: 10px;
 }
-.description {
-  float: right;
-  padding-left: 40px;
+
+.txt {
+  color: #fff;
+  font-family: Helvetica;
+  font-weight: bold;
 }
-  */
+
+.ico {
+  color: #727b87;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #0b466e;
+}
+
+.active {
+  background-color: #0b466e;
+}
+
+.txt2 {
+  color: #b0b3b8;
+  font-family: Calibri;
+}
+
+.buttons {
+  border-right: 2px solid;
+  border-color: #414142;
+  display: flex;
+  margin-left: -10px;
+  width: 34%;
+}
+
+.contenido {
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+@media screen and (max-width: 1679px) {
+  #hijo {
+    margin: 0 auto;
+    width: 47vw;
+    max-width: 47vw;
+    height: 52vh;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  #hijo {
+    margin: 0 auto;
+    width: 80vw;
+    max-width: 60vw;
+    height: 52vh;
+  }
+}
+@media screen and (max-width: 1400px) {
+  #hijo {
+    margin: 0 auto;
+    width: 70vw;
+    max-width: 56vw;
+    height: 52vh;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #hijo {
+    margin: 0 auto;
+    width: 70vw;
+    max-width: 62vw;
+    height: 52vh;
+  }
+}
+
+@media screen and (max-width: 1270px) {
+  #hijo {
+    margin: 0 auto;
+    width: 70vw;
+    max-width: 70vw;
+    height: 52vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .buttons {
+    border-right: 0px;
+    border-bottom: 2px solid;
+    border-color: #414142;
+    margin-left: 0px;
+    padding-left: 11vw;
+  }
+  #hijo {
+    margin: 0 auto;
+    width: 70vw;
+    max-width: 70vw;
+    height: 80vh;
+  }
+}

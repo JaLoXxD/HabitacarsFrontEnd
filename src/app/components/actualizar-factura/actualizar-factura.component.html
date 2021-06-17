@@ -35,22 +35,30 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="numTran" class="form-label">Número de transferencia:</label>
+                    <input class="form-control" type="number" placeholder="Ingrese el # de transferencia"
+                        aria-label="default input example" id="numTran" [(ngModel)]="numTran" name="numTran">
+                </div>
+                <div class="col-lg-6 col-md-2 mb-3">
                     <label for="valor" class="form-label">Valor:</label>
                     <input class="form-control" type="number" placeholder="Ingrese el valor de factura"
                         aria-label="default input example" id="valor" [(ngModel)]="valor" name="valor">
                 </div>
-                <div class="col-lg-6 col-md-2 mb-3">
-                    <label for="adelanto" class="form-label">Adelanto:</label>
-                    <input class="form-control" type="number" placeholder="Ingrese el valor del adelanto" aria-label="default input example"
-                        id="valor" [(ngModel)]="adelanto" name="adelanto">
-                </div>
             </div>
             <div class="row">
+                <div class="col-lg-6 col-md-2 mb-3">
+                    <label for="adelanto" class="form-label">Adelanto:</label>
+                    <input class="form-control" type="number" placeholder="Ingrese el valor del adelanto"
+                        aria-label="default input example" id="valor" [(ngModel)]="adelanto" name="adelanto">
+                </div>
                 <div class="col-lg-6 col-md-2 mb-3">
                     <label for="faltante" class="form-label">Faltante:</label>
                     <input class="form-control" type="number" placeholder="Ingrese el valor faltante"
                         aria-label="default input example" id="faltante" [(ngModel)]="faltante" name="faltante">
                 </div>
+            </div>
+            <div class="row">
+    
                 <div class="col-lg-6 col-md-2 mb-3">
                     <label for="observacion" class="form-label">Observación:</label>
                     <input class="form-control" type="text" placeholder="Ingrese la observación" aria-label="default input example"

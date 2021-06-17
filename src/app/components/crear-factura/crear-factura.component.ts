@@ -22,6 +22,7 @@ export class CrearFacturaComponent implements OnInit {
   observacion: string;
   cedula: string;
   idFac: number;
+  numTran: number;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -44,6 +45,7 @@ export class CrearFacturaComponent implements OnInit {
     this._clientService
       .postInvoice(
         this.cedula,
+        this.numTran,
         this.factura,
         this.fecPag,
         this.fecPag,

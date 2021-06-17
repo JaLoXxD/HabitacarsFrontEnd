@@ -1,0 +1,16 @@
+.img{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}
+.contenido{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+img{
+    height: 10vh;
+}

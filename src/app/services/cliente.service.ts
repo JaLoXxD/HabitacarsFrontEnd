@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class clientService {
-  /* private url = 'https://raptorapi.habitacars.com';  */
-  private url = 'http://127.0.0.1:4000';
+  private url = 'https://raptorapi.habitacars.com';  
+  /* private url = 'http://127.0.0.1:4000'; */
   constructor(private _http: HttpClient) {
     console.log('Service ready :D');
   }
@@ -128,6 +128,7 @@ export class clientService {
     desDes: string,
     bien: string,
     idFac: string,
+    numTran: number,
     encargado: string,
     formaPago: string
   ) {
@@ -166,6 +167,7 @@ export class clientService {
         desDes: desDes,
         bien: bien,
         idFac: idFac,
+        numTransferencia: numTran,
         encargado: encargado,
         formaPago: formaPago,
       },
@@ -174,6 +176,7 @@ export class clientService {
   }
   postInvoice(
     cedula: string,
+    numTran: number,
     num: string,
     fecha: string,
     fecMax: string,
@@ -192,6 +195,7 @@ export class clientService {
       `${this.url}/api/invoice`,
       {
         cedula: cedula,
+        numTransferencia: numTran,
         num: num,
         fecha: fecha,
         fecMax: fecMax,
@@ -299,7 +303,8 @@ export class clientService {
     total: number,
     adelanto: number,
     faltante: number,
-    observacion: string
+    observacion: string,
+    numTran: number,
   ) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -308,6 +313,7 @@ export class clientService {
       `${this.url}/api/updateInvoice`,
       {
         idFac: idFac,
+        numTransferencia: numTran,
         num: num,
         fecha: fecha,
         encargado: encargado,

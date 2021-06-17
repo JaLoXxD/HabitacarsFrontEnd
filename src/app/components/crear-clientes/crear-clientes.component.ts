@@ -54,6 +54,7 @@ export class CrearClientesComponent implements OnInit {
   formaPago: string = '0';
   date: any = new Date();
   actualDate: any;
+  numTran: number;
   provinces: any[] = [
     'Azuay',
     'Bolivar',
@@ -319,6 +320,7 @@ export class CrearClientesComponent implements OnInit {
           this.desDes,
           this.bien,
           this.idFac,
+          this.numTran,
           this.encargado,
           this.formaPago
         )
@@ -398,14 +400,29 @@ export class CrearClientesComponent implements OnInit {
     PdfMakeWrapper.setFonts(pdfFonts);
 
     const pdf = new PdfMakeWrapper();
+    pdf.styles({ style1: { bold: true } });
     pdf.pageSize('A4');
     pdf.pageMargins([40, 60, 40, 60]);
     pdf.header(
-      new Txt('Cotización Habitacars ')
+      new Txt('Cotización')
         .bold()
         .alignment('center')
         .fontSize(30)
-        .margin(15).end
+        .margin([0, 20, 0, 10])
+        .color('#94B45B').end
+    );
+    pdf.add(
+      await new Img('http://raptorapi.habitacars.com/api/img')
+        .width(100)
+        .absolutePosition(40, 20)
+        .build()
+    );
+    pdf.add(
+      new Txt(
+        '_______________________________________________________________________________________________'
+      )
+        .style('style1')
+        .color('#03548C').end
     );
     pdf.add(
       new Txt(
@@ -416,35 +433,41 @@ export class CrearClientesComponent implements OnInit {
           ', te damos la bienvenida.'
       )
         .fontSize(19)
-        .margin(10).end
+        .margin([0, 10, 0, 10]).end
     );
     pdf.add(
-      new Txt('Fecha: '+this.actualDate
-      )
-        .fontSize(19)
-        .margin(10).end
+      new Txt('Fecha: ' + this.actualDate).fontSize(19).margin([0, 10, 0, 10])
+        .end
     );
     pdf.add(
-      new Txt('A continuación te presentamos la proforma de tu interés.')
+      new Txt('Asesor: ' + localStorage.getItem('name'))
         .fontSize(19)
-        .margin(10).end
+        .margin([0, 10, 0, 10]).end
+    );
+    pdf.add(
+      new Txt('A continuación te presentamos la proforma de tu interés:')
+        .fontSize(19)
+        .margin([0, 10, 0, 10]).end
     );
     pdf.add(
       new Table([
-        ['Inmueble','Monto Seleccionado', 'Inscripción'],
-        [''+this.bien,'' + this.monto, '' + this.inscripcion],
+        [
+          new Txt('Inmueble').style('style1').end,
+          new Txt('Monto Seleccionado').style('style1').end,
+          new Txt('Inscripción').style('style1').end,
+        ],
+        ['' + this.bien, '' + this.monto, '' + this.inscripcion],
       ])
         .alignment('center')
         .fontSize(19)
-        .margin([0, 0, 0, 70])
-        .absolutePosition(130, 190).end
+        .margin([0, 10, 0, 10]).end
     );
     pdf.add(
       new Txt(
         'Puedes elegir entre las siguientes cuotas mensuales según más te convenga:'
       )
         .fontSize(19)
-        .margin(10).end
+        .margin([0, 10, 0, 10]).end
     );
 
     const meses24 = Math.ceil((this.monto * 0.12 + this.monto) / 24);
@@ -452,51 +475,19 @@ export class CrearClientesComponent implements OnInit {
     const meses36 = Math.ceil((this.monto * 0.12 + this.monto) / 36);
 
     const meses48 = Math.ceil((this.monto * 0.15 + this.monto) / 48);
-
     pdf.add(
       new Table([
-        ['24 Meses', '36 Meses', '48 Meses'],
+        [
+          new Txt('24 Meses').style('style1').end,
+          new Txt('36 Meses').style('style1').end,
+          new Txt('48 Meses').style('style1').end,
+        ],
         ['' + meses24, '' + meses36, '' + meses48],
       ])
         .alignment('center')
         .fontSize(19)
-        .margin([0, 0, 0, 70])
-        .absolutePosition(165, 320).end
+        .margin([0, 10, 0, 10]).end
     );
-   /*  pdf.add(
-      new Txt('Bien adquirido: ' + this.bien).fontSize(19).margin(10).end
-    );
-    pdf.add(
-      new Txt('Monto sin interes: ' + this.monto).fontSize(19).margin(10).end
-    );
-    pdf.add(new Txt('Meses: ' + this.meses).fontSize(19).margin(10).end);
-    pdf.add(
-      new Txt('Porcentaje de descuento: ' + this.porDes).fontSize(19).margin(10)
-        .end
-    );
-    pdf.add(
-      new Txt('Valor cuota inicial: ' + this.cuoIni).fontSize(19).margin(10).end
-    );
-    pdf.add(
-      new Txt('Valor cuota mensual: ' + this.cuoMen).fontSize(19).margin(10).end
-    );
-    pdf.add(
-      new Txt('Valor inscripción: ' + this.inscripcion).fontSize(19).margin(10)
-        .end
-    );
-    pdf.add(
-      new Txt('Valor inscripción (con descuento): ' + this.descIns)
-        .fontSize(19)
-        .margin(10).end
-    );
-    pdf.add(
-      new Txt('Valor a pagar (luego del primer pago): ' + this.pago)
-        .fontSize(19)
-        .margin(10).end
-    );
-    pdf.add(
-      new Txt('Valor a pagar total: ' + this.total).fontSize(19).margin(10).end
-    ); */
     //pdf.create().download('cotizacion.pdf');
     pdf.create().open();
   }

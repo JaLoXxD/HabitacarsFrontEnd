@@ -40,7 +40,7 @@
                         <button *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Contador'"
                             class="btn btn-outline-danger btn-block" title="Eliminar Usuario"
                             (click)="eliminar(client.CED_PER,client.NOM_PER,client.APE_PER)"><i class="fas fa-user-times"></i></button>
-                        <button *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Contador'"
+                        <button *ngIf="rol == 'Gerente' || rol == 'Supervisor' || rol == 'Contador' || rol == 'Call Center'"
                             class="btn btn-outline-success btn-block" title="Crear Llamada"
                             (click)="llamada(client.CED_PER)"><i class="fas fa-phone-volume"></i></button>
                     </td>

@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class empleadoService {
-  /* private url = 'https://raptorapi.habitacars.com'; */
-  private url = 'http://127.0.0.1:4000'; 
+  private url = 'https://raptorapi.habitacars.com';
+  /* private url = 'http://127.0.0.1:4000';  */
   constructor(private _http: HttpClient) {
     console.log('Service ready :D');
   }
@@ -73,5 +73,13 @@ export class empleadoService {
       },
       { headers }
     );
+  }
+  deleteEmpleado(cedula: string) {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    });
+    return this._http.delete(`${this.url}/api/deleteEmploye/${cedula}`, {
+      headers,
+    });
   }
 }
